@@ -1,6 +1,6 @@
 from typing import List, Dict
 from abc import ABC, abstractmethod
-import aiohttp
+import requests
 import re
 
 from models.hotel import Hotel
@@ -17,10 +17,9 @@ class BaseSupplier(ABC):
 
     async def fetch_data(self): 
         try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(self.url) as response:
-                    return await response.json()
-        except aiohttp.ClientError as e:
+            response = requests.get(self.url, verify=False)
+            return response.json()
+        except Exception as e:
             print(f"An error occurred: {e}")
             return None
     
