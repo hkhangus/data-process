@@ -1,6 +1,6 @@
 # PROCESS AND CLEAN DATA BY PYTHON
 
-- install required packacg
+- install required packages
 ```
 pip install requests
 ```
